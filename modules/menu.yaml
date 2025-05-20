@@ -28,9 +28,9 @@ instances:
     next_page: tutorial101
 
   - !Page
-    title: Dog1
+    title: Swift Sip
     border: False
-    icon: 🐶
-    next_page: dog1
+    icon: 🥤
+    next_page: swift_sip
 
 
