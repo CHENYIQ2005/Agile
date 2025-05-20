@@ -15,6 +15,6 @@ Feature: Gestion complète d'une série avec acteur et saisons
 
     Examples:
       | titre            | acteur         | saisons | attendu |
-      | Lupin            | Omar Sy        | 1       | 2       |
+      | The four seasons | Tina Fey       | 1       | 2       |
       | Dark             | Anna Müller    | 2       | 3       |
       | Dix Pour Cent    | Camille Cottin | 3       | 4       |
