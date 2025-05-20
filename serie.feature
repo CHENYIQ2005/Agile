@@ -5,6 +5,11 @@ Feature: Gestion complète d'une série avec acteur et saisons
   Et ajouter des saisons à la série,
   Afin de gérer à la fois les informations artistiques et de production.
 
+  Scenario: Une série ajoute une saison
+    Given une série intitulée "Astérix" avec 4 saisons
+    When j’ajoute une nouvelle saison
+    Then la série doit avoir 5 saisons
+
   Scenario Outline: Associer un acteur et ajouter une saison à une série
     Given une série intitulée "<titre>" avec <saisons> saison(s)
     And un acteur nommé "<acteur>"
