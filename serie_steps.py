@@ -25,8 +25,8 @@ class SerieSteps:
 
     @given('une série intitulée "{titre}" avec {saisons:d} saisons')
     def given_serie_with_params(context, titre, saisons):
-        context.steps = SerieSteps(serie=Serie(titre=titre, nb_saisons=saisons))
+        self.steps = Serie(titre=titre, nb_saisons=saisons)
 
     @then("la série doit avoir {attendu:d} saisons")
-    def then_serie_should_have_expected_seasons(context, attendu):
-        assert context.steps.serie.nb_saisons == attendu
+    def then_serie_should_have_expected_seasons(self, attendu):
+        assert self.serie.nb_saisons == attendu
