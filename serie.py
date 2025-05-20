@@ -2,9 +2,9 @@ from dataclasses import dataclass
 
 @dataclass
 class Serie:
-    titre: str = "Sans titre"
-    nb_saisons: int = 1
-    _suite: 'Serie' = None  # optionnel pour les series suivants
+    titre: str = "Astérix "
+    nb_saisons: int = 4
+    _suite: 'Serie' = None  
 
     def __str__(self):
         return f"Série: {self.titre}. Elle a {self.nb_saisons} saison(s)."
