@@ -4,7 +4,7 @@ from dataclasses import dataclass
 class Serie:
     titre: str = "Sans titre"
     nb_saisons: int = 1
-    _suite: 'Serie' = None  # 可选字段，用于表示“续集剧集”，对应 spouse
+    _suite: 'Serie' = None  # optionnel pour les series suivants
 
     def __str__(self):
         return f"Série: {self.titre}. Elle a {self.nb_saisons} saison(s)."
