@@ -25,14 +25,12 @@ instances:
     title: Tutorial 1o1
     border: False
     icon: "👨🏻‍🏫"
-    file_name: _play
     next_page: tutorial101
 
   - !Page
     title: Dog1
     border: False
-    icon: "🧩"
-    file_name: _play
+    icon: 🐶
     next_page: dog1
 
 
