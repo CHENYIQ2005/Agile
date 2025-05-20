@@ -1,0 +1,38 @@
+module:
+  - name: menu
+    doc: Custom menu
+    icon: "📋"
+
+imports:
+  - !Module
+    name: blocks
+
+classes:
+
+instances:
+
+  #  - !Scene
+  #    title: "Discover"
+  #    icon: "🔭"
+  #    lines: [1, 5]
+  #    as_name: scene
+
+  - !Text
+    title: "Explore 👇"
+    border: False
+
+  - !Page
+    title: Tutorial 1o1
+    border: False
+    icon: "👨🏻‍🏫"
+    file_name: _play
+    next_page: tutorial101
+
+  - !Page
+    title: Dog1
+    border: False
+    icon: "🧩"
+    file_name: _play
+    next_page: dog1
+
+
