@@ -1,25 +1,22 @@
-Feature: Gestion complète d'une série avec acteur et saisons
+Feature: Gestion des saisons d'une série
 
   En tant que gestionnaire de séries,
-  Je veux pouvoir associer un acteur principal à une série,
-  Et ajouter des saisons à la série,
-  Afin de gérer à la fois les informations artistiques et de production.
+  Je veux pouvoir ajouter des saisons à une série,
+  Afin de suivre l’évolution de sa production.
 
   Scenario: Une série ajoute une saison
     Given une série intitulée "Astérix" avec 4 saisons
     When j’ajoute une nouvelle saison
     Then la série doit avoir 5 saisons
 
-  Scenario Outline: Associer un acteur et ajouter une saison à une série
-    Given une série intitulée "<titre>" avec <saisons> saison(s)
-    And un acteur nommé "<acteur>"
-    When j’associe l’acteur à la série
-    And j’ajoute une nouvelle saison
-    Then le nom de l’acteur principal de la série est "<acteur>"
-    And la série doit avoir <attendu> saison(s)
+  Scenario Outline: Ajouter une saison à une série existante
+    Given une série intitulée "<titre>" avec <saisons> saisons
+    When j’ajoute une nouvelle saison
+    Then la série doit avoir <attendu> saisons
 
     Examples:
-      | titre            | acteur         | saisons | attendu |
-      | The four seasons | Tina Fey       | 1       | 2       |
-      | Dark             | Anna Müller    | 2       | 3       |
-      | Dix Pour Cent    | Camille Cottin | 3       | 4       |
+      | titre            | saisons | attendu |
+      | Astérix          | 4       | 5       |
+      | Lupin            | 5       | 6       |
+      | The four seasons | 1       | 4       |
+
