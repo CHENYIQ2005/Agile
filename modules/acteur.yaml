@@ -1,1 +1,27 @@
+module:
+  - name: acteur
+    icon: 🎭
+    doc: Module pour gérer les acteurs
+
+classes:
+  - !Class
+    name: Acteur
+    attributes:
+      - !Attribute {name: nom, type: str}
+      - !Attribute {name: age, type: int}
+    methods:
+      - !Method
+        name: afficher
+        code: |
+          print(f"Acteur: {self.nom}, Âge: {self.age}")
+
+instances:
+  - !Scene
+    title: Acteur Explorer
+    icon: 🎭
+    lines: [1, 1, 1]
+
+  - !Inspector
+    title: Acteur Test
+    source: !Acteur {nom: "Jean", age: 35}
 
