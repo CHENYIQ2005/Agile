@@ -33,5 +33,5 @@ class LifeSteps:
         self.person.happy_birthday()
 
     @then("they should be {older:d}")
-    def then_person_has_new_age(self, older):
+    def then_person_has_new_age(self, older: int):
         assert self.person.age == older
