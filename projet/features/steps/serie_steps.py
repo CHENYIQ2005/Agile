@@ -2,7 +2,7 @@ from behave import given, when, then
 from Serie import Serie
 from Acteur import Acteur
 
-# class logic ✅ 封装场景内逻辑的类
+# class logic  封装场景内逻辑的类
 class SerieLogic:
     def __init__(self):
         self.serie = None
@@ -19,7 +19,7 @@ class SerieLogic:
         self.serie.ajouter_saison()
 
     def get_acteur_nom(self):
-        return self.serie.get_acteur().getNom()  # ✅ 从 série 中查询 acteur 主角
+        return self.serie.get_acteur().getNom()  #  从 série 中查询 acteur 主角
 
     def get_nb_saisons(self):
         return self.serie.nb_saisons
