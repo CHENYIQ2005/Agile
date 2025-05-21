@@ -33,18 +33,6 @@ instances:
     icon: 🥤
     next_page: swift_sip
 
-  - !Page
-    title: 🎬 Série
-    icon: 🎬
-    source: projet/Serie.py
-    next_page: serie
-
-  - !Page
-    title: 🎭 Acteur
-    icon: 🎭
-    source: projet/Acteur.py
-    next_page: acteur
-
 
   - !Page
     title: Menu
