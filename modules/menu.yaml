@@ -41,9 +41,3 @@ instances:
     next_page: menu
 
 
-  - !Page
-    title: Série Test
-    icon: 🎬
-    source: projet/Serie.py
-    next_page: serie
-
