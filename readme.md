@@ -1,34 +1,29 @@
-# 📺 Projet BlueJ : **Serie Netflix**
+# 🎬 **Opération Netflix** : l’outil ultime pour gérer vos séries
 
-## 🎯 Contexte
 
-À l’ère de la surcharge informationnelle, chaque plateforme cherche à lancer la prochaine série à succès.  
-Mais avez-vous déjà pensé que derrière ces productions brillantes, il faut aussi une **gestion rigoureuse et bien structurée** ?
+As-tu déjà pensé à ce qui se passe **dans les coulisses** pendant que tu binges ta série préférée sur Netflix ?  
+Qui tient à jour les infos sur les séries ?  
+Quels acteurs jouent dedans ? Combien de saisons existent ? Comment rédiger une bonne accroche publicitaire ?
 
-C’est précisément pour cela que notre projet a vu le jour.  
-Il s'agit d'un **outil simple et fonctionnel** de gestion des informations sur les séries et les acteurs, destiné aux plateformes de contenu audiovisuel comme **Netflix**, etc.
+C’est pour répondre à toutes ces questions qu’est né ce petit projet de gestion de séries ! 🎬
 
 ---
 
-## 🧩 Objectifs
+## 👩‍💻 Pour qui ?
 
-Ce programme vise à modéliser deux entités principales :
+🎬 **Les plateformes** (comme Netflix) — pour enregistrer toutes les infos utiles sur les séries.
 
-- **`Serie`** : une série télévisée, avec un nom propre, qui peut voir son nombre de saisons augmenter au fil du temps et de son développement narratif.
-- **`Acteur`** : un acteur ou une actrice, pouvant être associé(e) à une série précise, et susceptible d’en jouer plusieurs à l’avenir.
+🎥 **Les équipes de production** — pour connaître facilement les liens entre acteurs et séries.
 
-Grâce à ce programme, les éditeurs de contenu, les équipes de production, voire les développeurs de systèmes de gestion de médias peuvent :
-
-- Créer un objet série, en saisissant son nom et le nombre initial de saisons ;
-- Ajouter dynamiquement de nouvelles saisons；
-- Associer un acteur à une série donnée；
-- Générer un message promotionnel lié à un acteur et sa série；
 
 ---
 
 ## 🛠️ Étapes du développement
 
-### 1. Création d’un objet `Serie`
+### 🎬 1 : C’est parti ! Création d’une `Serie`
+
+On commence par créer un nouvel objet série — un peu comme si on venait tout juste de trouver un titre,  
+mais sans acteur ni scénario pour l’instant.
 
 > J’ai créé et instancié un nouvel objet `Serie`.  
 > Au début, il était encore vide, avec seulement un titre et quelques informations de base — un peu comme une série fraîchement imaginée, sans contenu pour l’instant.
@@ -36,7 +31,8 @@ Grâce à ce programme, les éditeurs de contenu, les équipes de production, vo
 > <img width="415" alt="image" src="https://github.com/user-attachments/assets/321dd9bd-ae11-477b-b20e-c0a37140a0b1" />
 
 
-### 2. Ajout de saisons via la méthode `ajouterSaisons()`
+### 🔧 2. **Petit bonus** : grâce à la méthode `ajouterSaisons()`, on peut ajouter de nouvelles saisons à volonté.  
+C’est comme si l’équipe de production disait : *« Le public adore ? Allez, on tourne trois saisons de plus ! »*
 
 > Ensuite, j’ai appelé la méthode `ajouterSaisons()` pour ajouter plusieurs saisons.  
 > J’ai saisi le nombre de saisons, validé — quelques lignes d’interaction.  
@@ -59,15 +55,21 @@ Grâce à ce programme, les éditeurs de contenu, les équipes de production, vo
 ---
 
 ## ✅ Mise en place des tests unitaires
+###  Et les tests alors ? On veut du solide ! 🔍
 
 ### 4. Création de la classe `SerieTest`
-
+Tester, c’est comme goûter une recette avant de la servir à ses invités.  
+Alors j’ai sorti ma loupe de développeur et j’ai créé une classe spéciale : `SerieTest`.  
+Passer ma classe `Serie` au crible, histoire de m'assurer qu'elle se comporte bien avant de monter sur scène. 🎭
+ 
 > Pour m’assurer que tout fonctionne comme prévu, j’ai commencé par créer une nouvelle classe de test appelée `SerieTest`.  
 > C’est un peu comme installer une table d’examen : tout ce que je vais coder dans ma classe `Serie` devra maintenant passer par cette étape de validation.
 
 ### 5. Initialisation avec `@BeforeEach`
-
-> Dans la méthode annotée `@BeforeEach`, j’ai initialisé un objet `serie1`.  
+Avant chaque test, on nettoie le plateau et on repart à zéro.  
+Grâce à la méthode `@BeforeEach`, j’ai créé une série de base (`serie1`) pour avoir un terrain neutre à chaque fois.  
+Un peu comme si on remettait tous les accessoires en place avant de rejouer une scène.
+ 
 > Cela me permet d’avoir un point de départ commun pour tous les tests, comme un environnement propre avant chaque expérience.
 
 ### 6. Méthode de test `testAjouterSaisons()`
@@ -83,7 +85,7 @@ Grâce à ce programme, les éditeurs de contenu, les équipes de production, vo
 
 ---
 
-## 🎭 Extension du projet : la classe `Acteur`
+### 🎭 Étape 2 : Casting en cours ! Ajout de l’acteur `Acteur`
 
 ### 7. Création de la classe `Acteur`
 
@@ -135,15 +137,5 @@ Un petit moment de satisfaction : cela signifie que **ma logique fonctionne**, q
 
 
 
-## 🚀 À venir
-
-- Gestion de plusieurs séries pour un acteur
-- Historique des saisons
-- Interface graphique de visualisation
-
----
-
-Merci pour votre lecture ! 🎉  
-*Projet éducatif réalisé dans le cadre de l’apprentissage de la programmation objet avec BlueJ.*
 
 
