@@ -8,7 +8,7 @@ classes:
     name: Serie
     attributes:
       - !Attribute {name: titre, type: str}
-      - !Attribute {name: acteurs, type: list}
+      - !Attribute {name: acteurs, type: List[str]}
     methods:
       - !Method
         name: ajouter_acteur
@@ -17,7 +17,7 @@ classes:
       - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="The Office", acteurs=[])
+          s = type(self)(titre="The Office")
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "Erreur"
 
