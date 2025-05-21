@@ -26,7 +26,10 @@ instances:
     title: Série Tester
     icon: 🎬
     lines: [1, 2, 1]
+    
+  - !Serie &serie
+    titre: Friends
 
   - !Inspector
     title: Tester
-    source: !Serie {titre: "Friends", acteurs: []}
+    source: *serie
