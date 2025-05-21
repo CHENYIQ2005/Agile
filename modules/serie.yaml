@@ -1,1 +1,49 @@
+module:
+  - name: serie
+    icon: 🎬
+    doc: |
+      Test de la série et gestion des acteurs.
+    tag: test
+
+imports:
+  - !Module {name: kore, hidden: true}
+
+classes:
+
+  - !Class
+    name: Serie
+    doc: Une classe de test pour les séries
+    bases: [kore.Object]
+    attributes:
+    - !Attribute {name: titre, type: str}
+    - !Attribute {name: acteurs, type: list}
+    methods:
+    - !Method
+      name: ajouter_acteur
+      code: |
+        self.acteurs.append("ActeurTest")
+    - !Method
+      name: _test_ajouter_acteur
+      code: |
+        s = type(self)(titre="Friends", acteurs=[])
+        s.ajouter_acteur()
+        assert len(s.acteurs) == 1, "Erreur: l'acteur n'a pas été ajouté"
+
+instances:
+
+  - !Scene
+    title: Série Tester
+    icon: 🎬
+    lines: [1, 3, 1, 2, 2, 1]
+
+  - !Text
+    title: Description
+    icon: 🧾
+    text: |
+      Cette scène permet de tester les méthodes de la classe `Serie` dans un environnement de test LightCode.
+      Les tests utilisent les méthodes définies dans le module Python `Serie.py` et `serie_steps.py`.
+
+  - !Inspector
+    title: Classe Serie
+    source: !Serie {titre: "The Office", acteurs: []}
 
