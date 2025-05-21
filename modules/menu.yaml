@@ -34,3 +34,9 @@ instances:
     next_page: swift_sip
 
 
+  - !Page
+    title: Menu
+    border: False
+    icon: "📋"
+    next_page: menu
+
