@@ -33,6 +33,14 @@ instances:
     icon: 🥤
     next_page: swift_sip
 
+    
+  - !Page
+    title: serie
+    border: False
+    icon: 🥤
+    next_page: serie
+
+
 
   - !Page
     title: Menu
