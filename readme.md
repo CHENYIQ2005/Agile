@@ -3,7 +3,7 @@
 
 As-tu déjà pensé à ce qui se passe **dans les coulisses** pendant que tu binges ta série préférée sur Netflix ?  
 Qui tient à jour les infos sur les séries ?  
-Quels acteurs jouent dedans ? Combien de saisons existent ? Comment rédiger une bonne accroche publicitaire ?
+Quels acteurs jouent dedans ? Combien de saisons existent ? 
 
 C’est pour répondre à toutes ces questions qu’est né ce petit projet de gestion de séries ! 🎬
 
