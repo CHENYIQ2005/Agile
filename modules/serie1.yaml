@@ -1,7 +1,7 @@
 !Module
 name: serie1
 doc: |
-  Gérer les séries, les acteurs associés et le nombre de saisons
+  Gérer les séries et les acteurs associés
 icon: "🎬"
 tag: ""
 
@@ -11,13 +11,12 @@ imports:
 classes:
   - !Class
     name: Serie1
-    doc: Une série avec titre, liste d'acteurs et nombre de saisons
+    doc: Une série avec titre et liste d'acteurs
     icon: "🎞️"
     bases: [kore.Object]
     attributes:
       - !Attribute {name: titre, type: str}
-      - !Attribute {name: acteurs, type: list, default: []}
-      - !Attribute {name: saisons, type: int, default: 0}
+      - !Attribute {name: acteurs, type: list}
     states: ['vide', 'remplie']
     methods:
       - !Method
@@ -38,23 +37,9 @@ classes:
           self.state = 'remplie'
 
       - !Method
-        name: ajouter_saison
-        doc: Incrémente le nombre de saisons de 1
-        code: |
-          self.saisons += 1
-
-      - !Method
-        name: ajouter_saisons
-        doc: Ajoute un nombre donné de saisons
-        parameters:
-          - {name: nombre, type: int}
-        code: |
-          self.saisons += nombre
-
-      - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="Astérix")
+          s = type(self)(titre="Astérix", acteurs=[])
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -62,40 +47,27 @@ classes:
       - !Method
         name: _test_ajouter_acteur_nom
         code: |
-          s = type(self)(titre="Astérix")
+          s = type(self)(titre="Astérix", acteurs=[])
           s.ajouter_acteur_nom("Monica")
           assert s.acteurs == ["Monica"], "❌ Acteur non ajouté correctement"
           assert s.state == 'remplie', "❌ Mauvais état"
-
-      - !Method
-        name: _test_ajouter_saison
-        code: |
-          s = type(self)(titre="Astérix")
-          s.ajouter_saison()
-          assert s.saisons == 1, "❌ Saison non ajoutée"
-
-      - !Method
-        name: _test_ajouter_saisons
-        code: |
-          s = type(self)(titre="Astérix")
-          s.ajouter_saisons(3)
-          assert s.saisons == 3, "❌ Saisons non ajoutées correctement"
 
 instances:
   - !Scene
     icon: 🎬
     as_name: scene
     title: Série Tester™
-    lines: [4, 3, 2, 1]
+    lines: [3, 2, 1]
 
   - !Text
     icon: 🎯
-    title: "Une série avec acteurs et saisons?"
+    title: "Une série avec acteurs?"
     text: |
-      Les séries contiennent des acteurs et un nombre de saisons...
+      Les séries contiennent des acteurs...
 
   - !Serie1 &Asterix
     titre: "Astérix"
+    acteurs: ["chen"]
 
   - !Inspector
     title: Détails de la série
