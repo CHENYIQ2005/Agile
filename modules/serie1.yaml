@@ -18,11 +18,12 @@ classes:
       - !Attribute {name: titre, type: str}
       - !Attribute {name: acteurs, type: list}
       - !Attribute {name: nb_saisons, type: int, default: 1}
+      - !Attribute {name: state, type: str, default: 'vide'}
     states: ['vide', 'remplie']
     methods:
       - !Method
         name: ajouter_acteur
-        doc: Ajoute un acteur fictif
+        doc: Ajoute un acteur fictif et passe l'état à 'remplie'
         postcondition: remplie
         code: |
           self.acteurs.append("Test Acteur")
@@ -30,7 +31,7 @@ classes:
 
       - !Method
         name: ajouter_acteur_nom
-        doc: Ajoute un acteur donné par l'utilisateur
+        doc: Ajoute un acteur donné par l'utilisateur et passe l'état à 'remplie'
         parameters:
           - {name: nom, type: str}
         code: |
