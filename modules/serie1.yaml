@@ -39,13 +39,13 @@ classes:
 
       - !Method
         name: ajouter_saison
-        doc: Ajoute une saison
+        doc: Incrémente le nombre de saisons de 1
         code: |
           self.saisons += 1
 
       - !Method
         name: ajouter_saisons
-        doc: Ajoute un nombre de saisons donné
+        doc: Ajoute un certain nombre de saisons
         parameters:
           - {name: nombre, type: int}
         code: |
