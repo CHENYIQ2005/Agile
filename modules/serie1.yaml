@@ -39,7 +39,7 @@ classes:
       - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="Friends", acteurs=[])
+          s = type(self)(titre="Astérix", acteurs=[])
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -47,7 +47,7 @@ classes:
       - !Method
         name: _test_ajouter_acteur_nom
         code: |
-          s = type(self)(titre="Friends", acteurs=[])
+          s = type(self)(titre="Astérix", acteurs=[])
           s.ajouter_acteur_nom("Monica")
           assert s.acteurs == ["Monica"], "❌ Acteur non ajouté correctement"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -61,14 +61,14 @@ instances:
 
   - !Text
     icon: 🎯
-    title: "Pourquoi tester une série ?"
+    title: "Une série avec acteurs?"
     text: |
-      Les séries contiennent des listes d'acteurs...
+      Les séries contiennent des acteurs...
 
-  - !Serie1 &friends
-    titre: "Friends"
+  - !Serie1 &Astérix
+    titre: "Astérix"
     acteurs: ["chen"]
 
   - !Inspector
     title: Détails de la série
-    source: *friends
+    source: *Astérix
