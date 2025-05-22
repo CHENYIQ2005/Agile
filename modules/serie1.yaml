@@ -1,9 +1,9 @@
-module:
-  - name: serie1
-    doc: |
-      Gérer les séries et les acteurs associés
-    icon: "🎬"
-    tag: ""
+!Module
+name: serie1
+doc: |
+  Gérer les séries et les acteurs associés
+icon: "🎬"
+tag: ""
 
 imports:
   - !Module {name: kore, hidden: True}
