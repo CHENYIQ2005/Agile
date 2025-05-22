@@ -17,6 +17,7 @@ classes:
     attributes:
       - !Attribute {name: titre, type: str}
       - !Attribute {name: acteurs, type: list}
+      - !Attribute {name: nom, type: str}  # ✅ 新增用于表单绑定
     states: ['vide', 'remplie']
     methods:
       - !Method
@@ -63,6 +64,7 @@ instances:
   - !Serie1 &friends
     titre: "Friends"
     acteurs: []
+    nom: ""
 
   - !Inspector
     title: Détails de la série
@@ -72,8 +74,8 @@ instances:
     title: Ajouter un acteur personnalisé
     attributes: [nom]
     border: True
+    subjects: [*friends]
     on_submit:
       - !Function
         code: |
           self.subjects[0].ajouter_acteur_nom()
-    subjects: [*friends]
