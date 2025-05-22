@@ -1,1 +1,92 @@
+module:
+  - name: serie1
+    doc: |
+      Gérer les séries et les acteurs associés
+      
+      Ajoutez des acteurs à une série et testez dynamiquement vos objets !
+    icon: "🎬"
+    tag: ""
+
+imports:
+  - !Module {name: kore, hidden: True}
+
+classes:
+
+  - !Class
+    name: Serie1
+    doc: Une série avec titre et liste d'acteurs
+    icon: "🎞️"
+    bases: [kore.Object]
+    attributes:
+      - !Attribute {name: titre, type: str}
+      - !Attribute {name: acteurs, type: list}
+    states: ['vide', 'remplie']
+    methods:
+      - !Method
+        name: ajouter_acteur
+        doc: Ajoute un acteur fictif
+        preconditions: ['vide']
+        postcondition: remplie
+        code: |
+          self.acteurs.append("Test Acteur")
+
+      - !Method
+        name: _test_ajouter_acteur
+        code: |
+          s = type(self)(titre="Friends", acteurs=[])
+          s.ajouter_acteur()
+          assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
+          assert s.state == 'remplie', "❌ Mauvais état"
+
+instances:
+
+  - !Scene
+    icon: 🎬
+    as_name: scene
+    title: Série Tester™
+    lines: [3, 2, 1]
+
+  - !Text
+    icon: 🎯
+    title: "Pourquoi tester une série ?"
+    text: |
+      Les séries contiennent des listes d'acteurs. Il faut tester si l'ajout d'un acteur fonctionne correctement, et si l'état de la série est bien mis à jour.
+
+      Ce module démontre l'utilisation de méthodes, d'inspecteurs, et de tests automatiques dans LightCode.
+
+  - !Text
+    title: Persona
+    icon: 🧑‍💻
+    text: |
+      **Utilisateur cible** : un·e développeur·se Python qui modélise des objets complexes.
+      
+      **Besoins** :
+      - Ajouter dynamiquement des acteurs à une série.
+      - Vérifier l'état des objets après chaque opération.
+      
+      **Douleurs** :
+      - Méthodes non testées.
+      - Données peu visualisables.
+
+  - !Serie &friends
+    titre: "Friends"
+    acteurs: []
+
+  - !Inspector
+    title: Détails de la série
+    source: *friends
+
+  - !Table &table_serie
+    title: Séries enregistrées
+    source: [*friends]
+
+  - !Form
+    title: Ajouter un acteur
+    subjects: [*table_serie]
+    attributes: [titre, acteurs]
+    border: True
+    on_init:
+      - !Function
+        code: |
+          self._hidden = len(self.subjects[0].source) == 0
 
