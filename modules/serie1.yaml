@@ -45,7 +45,7 @@ classes:
 
       - !Method
         name: ajouter_saisons
-        doc: Ajoute un certain nombre de saisons
+        doc: Ajoute un nombre donné de saisons
         parameters:
           - {name: nombre, type: int}
         code: |
@@ -86,7 +86,7 @@ instances:
     icon: 🎬
     as_name: scene
     title: Série Tester™
-    lines: [3, 2, 1]
+    lines: [4, 3, 2, 1]
 
   - !Text
     icon: 🎯
