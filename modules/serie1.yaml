@@ -16,8 +16,8 @@ classes:
     bases: [kore.Object]
     attributes:
       - !Attribute {name: titre, type: str}
-      - !Attribute {name: acteurs, type: list}
-      - !Attribute {name: saisons, type: int}
+      - !Attribute {name: acteurs, type: list, default: []}
+      - !Attribute {name: saisons, type: int, default: 0}
     states: ['vide', 'remplie']
     methods:
       - !Method
@@ -54,7 +54,7 @@ classes:
       - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="Astérix", acteurs=[], saisons=0)
+          s = type(self)(titre="Astérix")
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -62,7 +62,7 @@ classes:
       - !Method
         name: _test_ajouter_acteur_nom
         code: |
-          s = type(self)(titre="Astérix", acteurs=[], saisons=0)
+          s = type(self)(titre="Astérix")
           s.ajouter_acteur_nom("Monica")
           assert s.acteurs == ["Monica"], "❌ Acteur non ajouté correctement"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -70,14 +70,14 @@ classes:
       - !Method
         name: _test_ajouter_saison
         code: |
-          s = type(self)(titre="Astérix", acteurs=[], saisons=0)
+          s = type(self)(titre="Astérix")
           s.ajouter_saison()
           assert s.saisons == 1, "❌ Saison non ajoutée"
 
       - !Method
         name: _test_ajouter_saisons
         code: |
-          s = type(self)(titre="Astérix", acteurs=[], saisons=0)
+          s = type(self)(titre="Astérix")
           s.ajouter_saisons(3)
           assert s.saisons == 3, "❌ Saisons non ajoutées correctement"
 
@@ -96,8 +96,6 @@ instances:
 
   - !Serie1 &Asterix
     titre: "Astérix"
-    acteurs: ["chen"]
-    saisons: 1
 
   - !Inspector
     title: Détails de la série
