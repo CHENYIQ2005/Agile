@@ -1,7 +1,7 @@
 !Module
 name: serie1
 doc: |
-  Gérer les séries et les acteurs associés
+  Gérer les séries, les acteurs associés et le nombre de saisons
 icon: "🎬"
 tag: ""
 
@@ -11,12 +11,13 @@ imports:
 classes:
   - !Class
     name: Serie1
-    doc: Une série avec titre et liste d'acteurs
+    doc: Une série avec titre, liste d'acteurs et nombre de saisons
     icon: "🎞️"
     bases: [kore.Object]
     attributes:
       - !Attribute {name: titre, type: str}
       - !Attribute {name: acteurs, type: list}
+      - !Attribute {name: saisons, type: int}
     states: ['vide', 'remplie']
     methods:
       - !Method
@@ -37,9 +38,17 @@ classes:
           self.state = 'remplie'
 
       - !Method
+        name: ajouter_saison
+        doc: Incrémente le nombre de saisons de la série
+        postcondition: remplie
+        code: |
+          self.saisons += 1
+          self.state = 'remplie'
+
+      - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="Astérix", acteurs=[])
+          s = type(self)(titre="Astérix", acteurs=[], saisons=0)
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -47,9 +56,17 @@ classes:
       - !Method
         name: _test_ajouter_acteur_nom
         code: |
-          s = type(self)(titre="Astérix", acteurs=[])
+          s = type(self)(titre="Astérix", acteurs=[], saisons=0)
           s.ajouter_acteur_nom("Monica")
           assert s.acteurs == ["Monica"], "❌ Acteur non ajouté correctement"
+          assert s.state == 'remplie', "❌ Mauvais état"
+
+      - !Method
+        name: _test_ajouter_saison
+        code: |
+          s = type(self)(titre="Astérix", acteurs=[], saisons=1)
+          s.ajouter_saison()
+          assert s.saisons == 2, "❌ Saison non incrémentée"
           assert s.state == 'remplie', "❌ Mauvais état"
 
 instances:
@@ -68,6 +85,7 @@ instances:
   - !Serie1 &Asterix
     titre: "Astérix"
     acteurs: ["chen"]
+    saisons: 0
 
   - !Inspector
     title: Détails de la série
