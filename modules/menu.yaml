@@ -1,51 +1,56 @@
 module:
-  - name: menu
-    doc: Custom menu
-    icon: "📋"
+  - name: serie1
+    doc: |
+      Gérer les séries et les acteurs associés
+    icon: "🎬"
+    tag: ""
 
 imports:
-  - !Module
-    name: blocks
+  - !Module {name: kore, hidden: True}
 
 classes:
+  - !Class
+    name: Serie1
+    doc: Une série avec titre et liste d'acteurs
+    icon: "🎞️"
+    bases: [kore.Object]
+    attributes:
+      - !Attribute {name: titre, type: str}
+      - !Attribute {name: acteurs, type: list}
+    states: ['vide', 'remplie']
+    methods:
+      - !Method
+        name: ajouter_acteur
+        doc: Ajoute un acteur fictif
+        preconditions: ['vide']
+        postcondition: remplie
+        code: |
+          self.acteurs.append("Test Acteur")
+      - !Method
+        name: _test_ajouter_acteur
+        code: |
+          s = type(self)(titre="Friends", acteurs=[])
+          s.ajouter_acteur()
+          assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
+          assert s.state == 'remplie', "❌ Mauvais état"
 
 instances:
-
-  #  - !Scene
-  #    title: "Discover"
-  #    icon: "🔭"
-  #    lines: [1, 5]
-  #    as_name: scene
+  - !Scene
+    icon: 🎬
+    as_name: scene
+    title: Série Tester™
+    lines: [3, 2, 1]
 
   - !Text
-    title: "Explore 👇"
-    border: False
+    icon: 🎯
+    title: "Pourquoi tester une série ?"
+    text: |
+      Les séries contiennent des listes d'acteurs...
 
-  - !Page
-    title: Tutorial 1o1
-    border: False
-    icon: "👨🏻‍🏫"
-    next_page: tutorial101
+  - !Serie1 &friends
+    titre: "Friends"
+    acteurs: []
 
-  - !Page
-    title: Swift Sip
-    border: False
-    icon: 🥤
-    next_page: swift_sip
-
-    
-  - !Page
-    title: serie1
-    border: False
-    icon: 🥤
-    next_page: serie1
-
-
-
-  - !Page
-    title: Menu
-    border: False
-    icon: "📋"
-    next_page: menu
-
-
+  - !Inspector
+    title: Détails de la série
+    source: *friends
