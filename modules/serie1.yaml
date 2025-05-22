@@ -17,7 +17,7 @@ classes:
     attributes:
       - !Attribute {name: titre, type: str}
       - !Attribute {name: acteurs, type: list}
-      - !Attribute {name: nom, type: str}  # ✅ 新增用于表单绑定
+      - !Attribute {name: nom, type: str}
     states: ['vide', 'remplie']
     methods:
       - !Method
@@ -43,7 +43,7 @@ classes:
       - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="Friends", acteurs=[])
+          s = type(self)(titre="Friends", acteurs=[], nom="")
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -62,9 +62,7 @@ instances:
       Les séries contiennent des listes d'acteurs...
 
   - !Serie1 &friends
-    titre: "Friends"
-    acteurs: []
-    nom: ""
+    value: {titre: "Friends", acteurs: [], nom: ""}
 
   - !Inspector
     title: Détails de la série
