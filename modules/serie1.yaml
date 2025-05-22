@@ -25,6 +25,7 @@ classes:
         postcondition: remplie
         code: |
           self.acteurs.append("Test Acteur")
+          self.state = 'remplie'
 
       - !Method
         name: ajouter_acteur_nom
@@ -64,10 +65,10 @@ instances:
     text: |
       Les séries contiennent des acteurs...
 
-  - !Serie1 &Astérix
+  - !Serie1 &Asterix
     titre: "Astérix"
     acteurs: ["chen"]
 
   - !Inspector
     title: Détails de la série
-    source: *Astérix
+    source: *Asterix
