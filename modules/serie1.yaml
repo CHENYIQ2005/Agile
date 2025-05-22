@@ -16,9 +16,9 @@ classes:
     bases: [kore.Object]
     attributes:
       - !Attribute {name: titre, type: str}
-      - !Attribute {name: acteurs, type: list}
+      - !Attribute {name: acteurs, type: list, default: []}
       - !Attribute {name: nb_saisons, type: int, default: 1}
-      - !Attribute {name: state, type: str, default: 'vide'}
+      - !Attribute {name: state, type: str, default: "vide"}
     states: ['vide', 'remplie']
     methods:
       - !Method
@@ -46,6 +46,7 @@ classes:
 
       - !Method
         name: _test_ajouter_acteur
+        doc: Test interne pour ajouter_acteur
         code: |
           s = type(self)(titre="Astérix", acteurs=[], nb_saisons=1)
           s.ajouter_acteur()
@@ -54,6 +55,7 @@ classes:
 
       - !Method
         name: _test_ajouter_acteur_nom
+        doc: Test interne pour ajouter_acteur_nom
         code: |
           s = type(self)(titre="Astérix", acteurs=[], nb_saisons=1)
           s.ajouter_acteur_nom("Monica")
@@ -62,6 +64,7 @@ classes:
 
       - !Method
         name: _test_ajouter_saison
+        doc: Test interne pour ajouter_saison
         code: |
           s = type(self)(titre="Test", acteurs=[], nb_saisons=2)
           s.ajouter_saison()
@@ -69,23 +72,23 @@ classes:
 
 instances:
   - !Scene
-    icon: 🎬
+    icon: "🎬"
     as_name: scene
-    title: Série Tester™
+    title: "Série Tester™"
     lines: [3, 2, 1]
 
   - !Text
-    icon: 🎯
+    icon: "🎯"
     title: "Une série avec acteurs?"
     text: |
       Les séries contiennent des acteurs...
 
-  - !Serie1 &Astérix
+  - !Serie1 &Asterix
     titre: "Astérix"
     acteurs: ["chen"]
     nb_saisons: 1
     state: remplie
 
   - !Inspector
-    title: Détails de la série
-    source: *Astérix
+    title: "Détails de la série"
+    source: *Asterix
