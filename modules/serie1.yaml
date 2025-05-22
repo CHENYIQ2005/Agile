@@ -22,7 +22,6 @@ classes:
       - !Method
         name: ajouter_acteur
         doc: Ajoute un acteur fictif
-        preconditions: ['vide']
         postcondition: remplie
         code: |
           self.acteurs.append("Test Acteur")
