@@ -17,7 +17,6 @@ classes:
     attributes:
       - !Attribute {name: titre, type: str}
       - !Attribute {name: acteurs, type: list}
-      - !Attribute {name: nb_saisons, type: int, default: 1}
     states: ['vide', 'remplie']
     methods:
       - !Method
@@ -26,7 +25,6 @@ classes:
         postcondition: remplie
         code: |
           self.acteurs.append("Test Acteur")
-          self.state = 'remplie'
 
       - !Method
         name: ajouter_acteur_nom
@@ -38,15 +36,9 @@ classes:
           self.state = 'remplie'
 
       - !Method
-        name: ajouter_saison
-        doc: Incrémente le nombre de saisons
-        code: |
-          self.nb_saisons += 1
-
-      - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="Astérix", acteurs=[], nb_saisons=1)
+          s = type(self)(titre="Astérix", acteurs=[])
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
           assert s.state == 'remplie', "❌ Mauvais état"
@@ -54,17 +46,10 @@ classes:
       - !Method
         name: _test_ajouter_acteur_nom
         code: |
-          s = type(self)(titre="Astérix", acteurs=[], nb_saisons=1)
+          s = type(self)(titre="Astérix", acteurs=[])
           s.ajouter_acteur_nom("Monica")
           assert s.acteurs == ["Monica"], "❌ Acteur non ajouté correctement"
           assert s.state == 'remplie', "❌ Mauvais état"
-
-      - !Method
-        name: _test_ajouter_saison
-        code: |
-          s = type(self)(titre="Test", acteurs=[], nb_saisons=2)
-          s.ajouter_saison()
-          assert s.nb_saisons == 3, f"❌ nb_saisons attendu 3, obtenu {s.nb_saisons}"
 
 instances:
   - !Scene
@@ -79,13 +64,10 @@ instances:
     text: |
       Les séries contiennent des acteurs...
 
-  - !Serie1
-    as_name: Asterix
+  - !Serie1 &Astérix
     titre: "Astérix"
     acteurs: ["chen"]
-    nb_saisons: 1
-    state: remplie
 
   - !Inspector
     title: Détails de la série
-    source: Asterix
+    source: *Astérix
