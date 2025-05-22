@@ -35,10 +35,10 @@ instances:
 
     
   - !Page
-    title: serie
+    title: serie1
     border: False
     icon: 🥤
-    next_page: serie
+    next_page: serie1
 
 
 
