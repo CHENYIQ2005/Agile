@@ -29,7 +29,7 @@ classes:
       - !Method
         name: ajouter_acteur_nom
         doc: Ajoute un acteur donné par l'utilisateur
-        params:
+        parameters:
           - {name: nom, type: str}
         code: |
           self.acteurs.append(nom)
