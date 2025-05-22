@@ -11,13 +11,20 @@ classes:
       - !Attribute {name: acteurs, type: List[str]}
     methods:
       - !Method
+        name: __init__
+        code: |
+          self.titre = titre
+          self.acteurs = []
+
+      - !Method
         name: ajouter_acteur
         code: |
           self.acteurs.append("TestActeur")
+
       - !Method
         name: _test_ajouter_acteur
         code: |
-          s = type(self)(titre="The Office")
+          s = type(self)("The Office")
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "Erreur"
 
@@ -26,7 +33,7 @@ instances:
     title: Série Tester
     icon: 🎬
     lines: [1, 2, 1]
-    
+
   - !Serie &serie
     titre: Friends
 
