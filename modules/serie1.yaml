@@ -26,12 +26,30 @@ classes:
         postcondition: remplie
         code: |
           self.acteurs.append("Test Acteur")
+
+      - !Method
+        name: ajouter_acteur_nom
+        doc: Ajoute un acteur donné par l'utilisateur
+        params:
+          - {name: nom, type: str}
+        code: |
+          self.acteurs.append(nom)
+          self.state = 'remplie'
+
       - !Method
         name: _test_ajouter_acteur
         code: |
           s = type(self)(titre="Friends", acteurs=[])
           s.ajouter_acteur()
           assert len(s.acteurs) == 1, "❌ Acteur non ajouté"
+          assert s.state == 'remplie', "❌ Mauvais état"
+
+      - !Method
+        name: _test_ajouter_acteur_nom
+        code: |
+          s = type(self)(titre="Friends", acteurs=[])
+          s.ajouter_acteur_nom("Monica")
+          assert s.acteurs == ["Monica"], "❌ Acteur non ajouté correctement"
           assert s.state == 'remplie', "❌ Mauvais état"
 
 instances:
