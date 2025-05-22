@@ -83,6 +83,7 @@ instances:
     titre: "Astérix"
     acteurs: ["chen"]
     nb_saisons: 1
+    state: remplie
 
   - !Inspector
     title: Détails de la série
