@@ -79,7 +79,8 @@ instances:
     text: |
       Les séries contiennent des acteurs...
 
-  - !Serie1 &Astérix
+  - !Serie1
+    as_name: Asterix
     titre: "Astérix"
     acteurs: ["chen"]
     nb_saisons: 1
@@ -87,4 +88,4 @@ instances:
 
   - !Inspector
     title: Détails de la série
-    source: *Astérix
+    source: Asterix
