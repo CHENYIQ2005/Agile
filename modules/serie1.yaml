@@ -25,7 +25,20 @@ classes:
         preconditions: ['vide']
         postcondition: remplie
         code: |
+          if not isinstance(self.acteurs, list):
+              self.acteurs = []
           self.acteurs.append("Test Acteur")
+          self.state = 'remplie'
+
+      - !Method
+        name: ajouter_acteur_nom
+        doc: Ajoute un acteur personnalisé
+        code: |
+          if not isinstance(self.acteurs, list):
+              self.acteurs = []
+          self.acteurs.append(self.nom)
+          self.state = 'remplie'
+
       - !Method
         name: _test_ajouter_acteur
         code: |
@@ -54,3 +67,13 @@ instances:
   - !Inspector
     title: Détails de la série
     source: *friends
+
+  - !Form
+    title: Ajouter un acteur personnalisé
+    attributes: [nom]
+    border: True
+    on_submit:
+      - !Function
+        code: |
+          self.subjects[0].ajouter_acteur_nom()
+    subjects: [*friends]
