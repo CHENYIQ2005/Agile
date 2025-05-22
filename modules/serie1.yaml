@@ -67,7 +67,7 @@ instances:
 
   - !Serie1 &friends
     titre: "Friends"
-    acteurs: []
+    acteurs: ["chen"]
 
   - !Inspector
     title: Détails de la série
