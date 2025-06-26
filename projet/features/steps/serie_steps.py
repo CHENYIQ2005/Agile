@@ -2,8 +2,28 @@ from behave import given, when, then
 from Serie import Serie
 from Acteur import Acteur
 
-
+# class logic  封装场景内逻辑的类
 class SerieLogic:
+    def __init__(self):
+        self.serie = None
+        self.acteur = None
+
+    def creer_serie(self, titre, nb_saisons):
+        self.serie = Serie(titre=titre, nb_saisons=nb_saisons)
+
+    def associer_acteur(self, nom):
+        self.acteur = Acteur(nom)
+        self.acteur.setSerie(self.serie)
+
+    def ajouter_saison(self):
+        self.serie.ajouter_saison()
+
+    def get_acteur_nom(self):
+        return self.serie.get_acteur().getNom()  #  从 série 中查询 acteur 主角
+
+    def get_nb_saisons(self):
+        return self.serie.nb_saisons
+
 
 
     @given('une série intitulée "{titre}" avec {nb:d} saison(s)')
